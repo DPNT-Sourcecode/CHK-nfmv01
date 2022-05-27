@@ -4,10 +4,9 @@ def checkout(skus):
     if all(isinstance(x, str) for x in skus):
         print('success')
     else:
-        return -1
+        print('fail')
 
+skus_1 = ['a', 'g']
 
-skus = ['a', 'g', 1]
-
-checkout(skus)
+checkout(skus_1)
 
