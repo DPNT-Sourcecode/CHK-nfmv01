@@ -8,5 +8,3 @@ class TestCheckout(unittest.TestCase):
         result = checkout_solution.checkout(skus)
         self.assertEqual(result, 310)
 
-
-
