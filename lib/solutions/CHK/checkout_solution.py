@@ -34,16 +34,3 @@ def checkout(skus):
 
     return sum(total)
 
-
-skus = ['A', 'A', 'B', 'A', 'D', 'C', 'B', 'A', 'A']
-skus_2 = ["ABCDABCD"]
-
-
-print(checkout(skus_2))
-
-'''
-Some requests have failed (3/24). Here are some of them:
- - {"method":"checkout","params":["ABCDABCD"],"id":"CHK_R1_022"}, expected: 215, got: 180
- - {"method":"checkout","params":["BABDDCAC"],"id":"CHK_R1_023"}, expected: 215, got: 180
- - {"method":"checkout","params":["ABCDCBAABCABBAAA"],"id":"CHK_R1_001"}, expected: 505, got: 465
-'''
