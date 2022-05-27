@@ -1,12 +1,13 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    # prices = []
     if all(isinstance(x, str) for x in skus):
-        print('success')
+        for x in skus:
+            print(x.price)
     else:
-        print('fail')
+        return -1
 
-skus_1 = ['a', 'g']
-
-checkout(skus_1)
-
+# skus_1 = ['a', 'g']
+#
+# checkout(skus_1)
