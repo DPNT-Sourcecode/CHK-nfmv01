@@ -4,10 +4,10 @@ def checkout(skus):
     counter = {}
     total = []
 
-    SKU_LIST = ['A', 'B', 'C', 'D']
+    available_skus = ['A', 'B', 'C', 'D']
 
     for x in skus:
-        if x not in SKU_LIST:
+        if x not in available_skus:
             return -1
         else:
             if x not in counter:
@@ -35,15 +35,8 @@ def checkout(skus):
     return sum(total)
 
 
-skus = ['A', 'A', 'B', 'A', 'D', 'C', 'B', 'A', 'A']
-
-
-print(checkout(skus))
-
-
-'''
-Some requests have failed (7/24). Here are some of them:
- - {"method":"checkout","params":["a"],"id":"CHK_R1_007"}, expected: -1, got: 0
- - {"method":"checkout","params":["-"],"id":"CHK_R1_008"}, expected: -1, got: 0
- - {"method":"checkout","params":["ABCa"],"id":"CHK_R1_009"}, expected: -1, got: 100
-'''
+# skus = ['A', 'A', 'B', 'A', 'D', 'C', 'B', 'A', 'A']
+# skus_2 = ['a']
+#
+#
+# print(checkout(skus_2))
