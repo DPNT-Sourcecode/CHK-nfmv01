@@ -4,7 +4,7 @@ def checkout(skus):
     # prices = []
     if all(isinstance(x, str) for x in skus):
         for x in skus:
-            print(x.price)
+            print(x)
     else:
         return -1
 
