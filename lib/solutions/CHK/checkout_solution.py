@@ -24,10 +24,10 @@ def checkout(skus):
             total.append((45 * discount_amt) + 30 * (count - (discount_amt * 2)))
 
         if sku == 'C':
-            total.append(20)
+            total.append(20 * count)
 
         if sku == 'D':
-            total.append(15)
+            total.append(15 * count)
 
         else:
             total.append(0)
