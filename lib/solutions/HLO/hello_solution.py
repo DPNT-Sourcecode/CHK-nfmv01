@@ -4,6 +4,4 @@ def hello(friend_name):
     if type(friend_name) == str:
         return print('Hello, World!')
     else:
-        return print(str(friend_name))
-
-hello("MR X")
+        raise TypeError('must pass str as argument')
