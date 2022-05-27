@@ -33,6 +33,8 @@ def checkout(skus):
 
     return sum(total)
 
+def add(x, y):
+    return x + y
 
 skus = ['A', 'A', 'B', 'A', 'D', 'C', 'B', 'A', 'A']
 
