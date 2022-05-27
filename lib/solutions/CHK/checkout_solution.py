@@ -4,14 +4,15 @@ def checkout(skus):
     counter = {}
     total = []
 
-    if all(isinstance(x, str) for x in skus):
-        for x in skus:
+    SKU_LIST = ['A', 'B', 'C', 'D']
+
+    for x in skus:
+        if x not in SKU_LIST:
+            return -1
+        else:
             if x not in counter:
                 counter[x] = 0
             counter[x] += 1
-
-    else:
-        return -1
 
     for sku, count in counter.items():
         if sku == 'A':
@@ -33,9 +34,16 @@ def checkout(skus):
 
     return sum(total)
 
-def add(x, y):
-    return x + y
 
 skus = ['A', 'A', 'B', 'A', 'D', 'C', 'B', 'A', 'A']
 
+
 print(checkout(skus))
+
+
+'''
+Some requests have failed (7/24). Here are some of them:
+ - {"method":"checkout","params":["a"],"id":"CHK_R1_007"}, expected: -1, got: 0
+ - {"method":"checkout","params":["-"],"id":"CHK_R1_008"}, expected: -1, got: 0
+ - {"method":"checkout","params":["ABCa"],"id":"CHK_R1_009"}, expected: -1, got: 100
+'''
