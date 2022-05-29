@@ -27,6 +27,9 @@ def checkout(skus):
             total_2 = 130 * remainder_2
 
             final_count = new_count - (remainder_2 * discount_2)
+            final_total = 50 * final_count
+
+            total.append(total_1 + total_2 + final_total)
 
         if sku == 'B':
             discount_amt = count // 2
@@ -46,4 +49,10 @@ def checkout(skus):
 
     return sum(total)
 
+
+test_sku = ['AAABBAAACCAAADEED']
+test_sku = [test_sku.split() for x in x]
+
+
+checkout()
 
