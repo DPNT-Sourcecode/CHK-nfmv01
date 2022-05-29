@@ -56,3 +56,10 @@ def checkout(skus):
 #
 # print(checkout(test_sku))
 
+'''
+Some requests have failed (8/40). Here are some of them:
+ - {"method":"checkout","params":["EEB"],"id":"CHK_R2_024"}, expected: 80, got: 110
+ - {"method":"checkout","params":["EEEB"],"id":"CHK_R2_025"}, expected: 120, got: 150
+ - {"method":"checkout","params":["EEEEBB"],"id":"CHK_R2_026"}, expected: 160, got: 205
+'''
+
