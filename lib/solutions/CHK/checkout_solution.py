@@ -51,8 +51,11 @@ def checkout(skus):
 
 
 test_sku = ['AAABBAAACCAAADEED']
-test_sku = [test_sku.split() for x in x]
+new = []
+for x in test_sku:
+    new.append(x.split(''))
 
+print(new)
 
-checkout()
+# checkout()
 
