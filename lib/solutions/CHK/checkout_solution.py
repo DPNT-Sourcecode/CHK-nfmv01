@@ -50,9 +50,9 @@ def checkout(skus):
     return sum(total)
 
 
-test = 'AAABBAAACCAAADEED'
-test_sku = [char for char in test]
-
-
-print(checkout(test_sku))
+# test = 'AAABBAAACCAAADEED'
+# test_sku = [char for char in test]
+#
+#
+# print(checkout(test_sku))
 
