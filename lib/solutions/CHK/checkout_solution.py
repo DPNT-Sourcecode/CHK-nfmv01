@@ -58,11 +58,19 @@ def checkout(skus):
     return sum(total)
 
 #
-# test = 'E'
-# test_sku = [char for char in test]
-#
-#
-# print(checkout(test_sku))
+test = 'EEEEBB'
+test_sku = [char for char in test]
+
+
+print(checkout(test_sku))
+
+
+'''
+Some requests have failed (5/40). Here are some of them:
+ - {"method":"checkout","params":["BEBEEE"],"id":"CHK_R2_027"}, expected: 160, got: 205
+ - {"method":"checkout","params":["ABCDEABCDE"],"id":"CHK_R2_038"}, expected: 280, got: 295
+ - {"method":"checkout","params":["CCADDEEBBA"],"id":"CHK_R2_039"}, expected: 280, got: 295
+'''
 
 
 
