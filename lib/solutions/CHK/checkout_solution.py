@@ -14,55 +14,59 @@ def checkout(skus):
                 counter[x] = 0
             counter[x] += 1
 
-    for sku, count in counter.items():
-        if sku == 'A':
-            discount_1 = 5
-            discount_2 = 3
+    if 'A' in counter.keys():
+        count = counter['A']
+        discount_1 = 5
+        discount_2 = 3
 
-            remainder_1 = count // discount_1
-            total_1 = 200 * remainder_1
+        remainder_1 = count // discount_1
+        total_1 = 200 * remainder_1
 
-            new_count = count - (remainder_1 * discount_1)
-            remainder_2 = new_count // discount_2
-            total_2 = 130 * remainder_2
+        new_count = count - (remainder_1 * discount_1)
+        remainder_2 = new_count // discount_2
+        total_2 = 130 * remainder_2
 
-            final_count = new_count - (remainder_2 * discount_2)
-            final_total = 50 * final_count
+        final_count = new_count - (remainder_2 * discount_2)
+        final_total = 50 * final_count
 
-            total.append(total_1 + total_2 + final_total)
+        total.append(total_1 + total_2 + final_total)
 
-        if sku == 'E':
-            total.append(40 * count)
+    if 'E' in counter.keys():
+        count = counter['E']
+        total.append(40 * count)
 
-            discount_amt = count // 2
+        discount_amt = count // 2
 
-            try:
-                if counter['B'] <= discount_amt:
-                    counter['B'] -= discount_amt
-            except KeyError:
-                pass
+        try:
+            if counter['B']:
+                counter['B'] -= discount_amt
+        except KeyError:
+            pass
 
-        if sku == 'B':
-            discount_amt = count // 2
-            total.append((45 * discount_amt) + 30 * (count - (discount_amt * 2)))
+    if 'B' in counter.keys():
+        count = counter['B']
+        discount_amt = count // 2
+        total.append((45 * discount_amt) + 30 * (count - (discount_amt * 2)))
 
-        if sku == 'C':
-            total.append(20 * count)
+    if 'C' in counter.keys():
+        count = counter['C']
+        total.append(20 * count)
 
-        if sku == 'D':
-            total.append(15 * count)
+    if 'D' in counter.keys():
+        count = counter['D']
+        total.append(15 * count)
 
-        else:
-            total.append(0)
+    else:
+        total.append(0)
 
     return sum(total)
 
+
+# test = 'CCADDEEBBA'
+# test_sku = [char for char in test]
 #
-test = 'BEBEEE'
-test_sku = [char for char in test]
-
-
-print(checkout(test_sku))
+#
+# print(checkout(test_sku))
 
 
 '''
