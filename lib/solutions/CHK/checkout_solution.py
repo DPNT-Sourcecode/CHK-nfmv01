@@ -31,6 +31,13 @@ def checkout(skus):
 
             total.append(total_1 + total_2 + final_total)
 
+        if sku == 'E':
+            total.append(40 * count)
+
+            discount_amt = count // 2
+            if counter['B'] <= discount_amt:
+                counter['B'] -= discount_amt
+
         if sku == 'B':
             discount_amt = count // 2
             total.append((45 * discount_amt) + 30 * (count - (discount_amt * 2)))
@@ -41,16 +48,13 @@ def checkout(skus):
         if sku == 'D':
             total.append(15 * count)
 
-        if sku == 'E':
-            total.append(40 * count)
-
         else:
             total.append(0)
 
     return sum(total)
 
 
-# test = 'AAABBAAACCAAADEED'
+# test = 'EEEEBB'
 # test_sku = [char for char in test]
 #
 #
