@@ -4,7 +4,7 @@ def checkout(skus):
     counter = {}
     total = []
 
-    available_skus = ['A', 'B', 'C', 'D']
+    available_skus = ['A', 'B', 'C', 'D', 'E']
 
     for x in skus:
         if x not in available_skus:
@@ -50,12 +50,9 @@ def checkout(skus):
     return sum(total)
 
 
-test_sku = ['AAABBAAACCAAADEED']
-new = []
-for x in test_sku:
-    new.append(x.split(''))
+test = 'AAABBAAACCAAADEED'
+test_sku = [char for char in test]
 
-print(new)
 
-# checkout()
+print(checkout(test_sku))
 
