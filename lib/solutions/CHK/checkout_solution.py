@@ -89,6 +89,3 @@ def checkout(skus):
 #
 #
 # print(checkout(test_sku))
-
-
-
