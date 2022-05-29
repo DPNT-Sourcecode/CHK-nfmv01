@@ -31,12 +31,12 @@ def checkout(skus):
 
             total.append(total_1 + total_2 + final_total)
 
-        if sku == 'E':
-            total.append(40 * count)
-
-            discount_amt = count // 2
-            if counter['B'] <= discount_amt:
-                counter['B'] -= discount_amt
+        # if sku == 'E':
+        #     total.append(40 * count)
+        #
+        #     discount_amt = count // 2
+        #     if counter['B'] <= discount_amt:
+        #         counter['B'] -= discount_amt
 
         if sku == 'B':
             discount_amt = count // 2
@@ -59,4 +59,5 @@ def checkout(skus):
 #
 #
 # print(checkout(test_sku))
+
 
