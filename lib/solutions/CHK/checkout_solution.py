@@ -16,8 +16,17 @@ def checkout(skus):
 
     for sku, count in counter.items():
         if sku == 'A':
-            discount_amt = count // 3
-            total.append((130 * discount_amt) + 50 * (count - (discount_amt * 3)))
+            discount_1 = 5
+            discount_2 = 3
+
+            remainder_1 = count // discount_1
+            total_1 = 200 * remainder_1
+
+            new_count = count - (remainder_1 * discount_1)
+            remainder_2 = new_count // discount_2
+            total_2 = 130 * remainder_2
+
+            final_count = new_count - (remainder_2 * discount_2)
 
         if sku == 'B':
             discount_amt = count // 2
@@ -29,8 +38,12 @@ def checkout(skus):
         if sku == 'D':
             total.append(15 * count)
 
+        if sku == 'E':
+            total.append(40 * count)
+
         else:
             total.append(0)
 
     return sum(total)
+
 
