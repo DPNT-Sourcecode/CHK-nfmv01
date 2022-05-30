@@ -159,10 +159,11 @@ def checkout(skus):
             counter[x] += 1
 
     group_offer_sum = group_offer(counter)
-    free_product_sum, updated_counter = free_product_offer_calc(counter)
-    remaining_sum = final_calc(updated_counter)
+    # free_product_sum, updated_counter = free_product_offer_calc(counter)
+    # remaining_sum = final_calc(updated_counter)
 
-    return group_offer_sum + free_product_sum + remaining_sum
+    # return group_offer_sum + free_product_sum + remaining_sum
+    return group_offer_sum, counter
 
 
 test = 'CXYZYZC'
@@ -175,4 +176,5 @@ print(checkout(test_sku))
 Some requests have failed (1/149). Here are some of them:
  - {"method":"checkout","params":["CXYZYZC"],"id":"CHK_R5_001"}, expected: 122, got: 119
 '''
+
 
