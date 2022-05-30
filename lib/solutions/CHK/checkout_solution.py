@@ -93,6 +93,9 @@ def final_calc(counter):
 
     return sum(totals)
 
+def group_offer(counter):
+    pass
+
 
 def checkout(skus):
     counter = {}
@@ -116,6 +119,7 @@ test_sku = [char for char in test]
 
 
 print(checkout(test_sku))
+
 
 
 
