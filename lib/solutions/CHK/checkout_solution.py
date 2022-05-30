@@ -31,7 +31,7 @@ products = {'A': [50, '3A-130', '5A-200'],
 
 #FUNCTION TO HANDLE ALL SPECIAL OFFERS WITH FREE PRODUCTS
 def free_product_offer_calc(counter):
-    total = []
+    totals = []
     for key, value in counter.items():
         try:
             if 'FREE' in products[key][1]:
@@ -47,11 +47,11 @@ def free_product_offer_calc(counter):
                     counter[key] -= discount_quantity
 
                     count = counter[key]
-                    total.append(base_price * count)
+                    totals.append(base_price * count)
 
                 else:
                     count = counter[key]
-                    total.append(base_price * count)
+                    totals.append(base_price * count)
                     discount_quantity = count // quantity
 
                     try:
@@ -63,12 +63,35 @@ def free_product_offer_calc(counter):
         except IndexError:
             pass
 
-    return sum(total), counter
+    return sum(totals), counter
 
 
 #FUNCTION TO HANDLE ALL REMAINING PRODUCTS
 def final_calc(counter):
-    
+    totals = []
+    for key, count in counter.items():
+        try:
+            offers = products[key][1:]
+            base_price = products[key][0]
+
+            for offer in reversed(offers):
+                offer = offer.split('-')
+                quantity = int(offer[0][:-1])
+                price = int(offer[1])
+
+                remainder = count // quantity
+                total = price * remainder
+                totals.append(total)
+
+                count = count - (remainder * quantity)
+
+            total_base = base_price * count
+            totals.append(total_base)
+
+        except ValueError:
+            pass
+
+    return sum(totals)
 
 
 def checkout(skus):
@@ -82,10 +105,15 @@ def checkout(skus):
                 counter[x] = 0
             counter[x] += 1
 
+    free_product_sum, updated_counter = free_product_offer_calc(counter)
+    remaining_sum = final_calc(updated_counter)
+
+    return (free_product_sum + remaining_sum)
 
 
-# test = 'FAFFAFEEFBBF'
-# test_sku = [char for char in test]
-#
-#
-# print(checkout(test_sku))
+test = 'FAFFAFEEFBBF'
+test_sku = [char for char in test]
+
+
+print(checkout(test_sku))
+
