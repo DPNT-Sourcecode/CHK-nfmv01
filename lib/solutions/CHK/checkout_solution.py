@@ -165,9 +165,14 @@ def checkout(skus):
     return group_offer_sum + free_product_sum + remaining_sum
 
 
-# test = 'TTTFAFFAFEEFBBFSSZ'
-# test_sku = [char for char in test]
-#
-#
-# print(checkout(test_sku))
+test = 'CXYZYZC'
+test_sku = [char for char in test]
+
+
+print(checkout(test_sku))
+
+'''
+Some requests have failed (1/149). Here are some of them:
+ - {"method":"checkout","params":["CXYZYZC"],"id":"CHK_R5_001"}, expected: 122, got: 119
+'''
 
