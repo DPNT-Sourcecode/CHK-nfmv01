@@ -108,7 +108,7 @@ def checkout(skus):
     free_product_sum, updated_counter = free_product_offer_calc(counter)
     remaining_sum = final_calc(updated_counter)
 
-    return (free_product_sum + remaining_sum)
+    return free_product_sum + remaining_sum
 
 
 test = 'FAFFAFEEFBBF'
@@ -116,4 +116,5 @@ test_sku = [char for char in test]
 
 
 print(checkout(test_sku))
+
 
