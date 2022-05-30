@@ -114,8 +114,8 @@ def checkout(skus):
     return free_product_sum + remaining_sum
 
 
-test = 'FAFFAFEEFBBF'
-test_sku = [char for char in test]
-
-
-print(checkout(test_sku))
+# test = 'FAFFAFEEFBBF'
+# test_sku = [char for char in test]
+#
+#
+# print(checkout(test_sku))
