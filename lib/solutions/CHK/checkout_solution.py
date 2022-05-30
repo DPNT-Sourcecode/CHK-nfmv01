@@ -29,6 +29,59 @@ products = {'A': [50, '3A-130', '5A-200'],
             'Z': [21, '3-(S,T,X,Y,Z)-45']}
 
 
+#FUNCTION TO HANDLE GROUP OFFERS
+def group_offer(counter):
+    group_discounts_list = []
+    for key, value in counter.items():
+        #indicator that group offer is present
+        group_signal = '('
+
+        try:
+            if group_signal in products[key][1]:
+                group_discounts_list.append(key)
+        except IndexError:
+            pass
+
+    if group_discounts_list:
+        x = products[group_discounts_list[0]][1]
+        x = x.split('-')
+        quantity = int(x[0])
+        price = int(x[2])
+        group_count = sum([counter[key] for key in group_discounts_list])
+
+        remainder = group_count // quantity
+
+        #total cost of group offers
+        total_included = price * remainder
+
+        #number of items not included in group offering
+        not_included = group_count - (quantity * remainder)
+
+        temp_dict = {sku: products[sku][0] for sku in group_discounts_list}
+        sorted_count_dict = {k: v for k,v in sorted(temp_dict.items(), key=lambda item: item[1])}
+
+        #total cost of items not included in group offering
+        total_leftover = []
+        for key, value in sorted_count_dict.items():
+            try:
+                while not_included >= 0:
+                    if counter[key] >= not_included:
+                        total_leftover.append(not_included * value)
+                        not_included = not_included - counter[key]
+
+                    else:
+                        total_leftover.append(counter[key] * value)
+                        not_included = not_included - counter[key]
+            except KeyError:
+                pass
+
+        return sum(total_leftover) + total_included
+
+    else:
+        return 0
+
+
+
 #FUNCTION TO HANDLE ALL SPECIAL OFFERS WITH FREE PRODUCTS
 def free_product_offer_calc(counter):
     totals = []
@@ -93,9 +146,6 @@ def final_calc(counter):
 
     return sum(totals)
 
-def group_offer(counter):
-    pass
-
 
 def checkout(skus):
     counter = {}
@@ -108,14 +158,16 @@ def checkout(skus):
                 counter[x] = 0
             counter[x] += 1
 
+    group_offer_sum = group_offer(counter)
     free_product_sum, updated_counter = free_product_offer_calc(counter)
     remaining_sum = final_calc(updated_counter)
 
-    return free_product_sum + remaining_sum
+    return group_offer_sum + free_product_sum + remaining_sum
 
 
-# test = 'FAFFAFEEFBBF'
+# test = 'TTTFAFFAFEEFBBFSSZ'
 # test_sku = [char for char in test]
 #
 #
 # print(checkout(test_sku))
+
