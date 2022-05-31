@@ -62,18 +62,20 @@ def group_offer(counter):
 
         #total cost of items not included in group offering
         total_leftover = []
-        for key, value in sorted_count_dict.items():
-            try:
-                while not_included >= 0:
+        while not_included != 0:
+            for key, value in sorted_count_dict.items():
+                try:
                     if counter[key] >= not_included:
                         total_leftover.append(not_included * value)
-                        not_included = not_included - counter[key]
+                        not_included = 0
 
                     else:
                         total_leftover.append(counter[key] * value)
                         not_included = not_included - counter[key]
-            except KeyError:
-                pass
+                        counter[key] -= not_included
+
+                except KeyError:
+                    pass
 
         return sum(total_leftover) + total_included
 
@@ -159,11 +161,10 @@ def checkout(skus):
             counter[x] += 1
 
     group_offer_sum = group_offer(counter)
-    # free_product_sum, updated_counter = free_product_offer_calc(counter)
-    # remaining_sum = final_calc(updated_counter)
+    free_product_sum, updated_counter = free_product_offer_calc(counter)
+    remaining_sum = final_calc(updated_counter)
 
-    # return group_offer_sum + free_product_sum + remaining_sum
-    return group_offer_sum, counter
+    return group_offer_sum + free_product_sum + remaining_sum
 
 
 test = 'CXYZYZC'
