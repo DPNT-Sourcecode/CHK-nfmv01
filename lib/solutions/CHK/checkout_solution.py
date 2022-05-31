@@ -176,5 +176,3 @@ print(checkout(test_sku))
 Some requests have failed (1/149). Here are some of them:
  - {"method":"checkout","params":["CXYZYZC"],"id":"CHK_R5_001"}, expected: 122, got: 119
 '''
-
-
